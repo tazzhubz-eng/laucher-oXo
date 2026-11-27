@@ -1,0 +1,47 @@
+Bạn là kỹ sư phần mềm Rust + chuyên gia tối ưu Minecraft. Hãy giúp tôi hoàn thiện dự án "oXo Launcher" — một launcher Minecraft viết bằng Rust, mục tiêu tối ưu FPS tối đa cho máy yếu (RAM 4GB, CPU 2 nhân, GPU tích hợp). Nhiệm vụ của bạn gồm 2 phần:
+
+PHẦN 1 — SỬA LỖI PROMPT CŨ:
+Prompt cũ của tôi có các lỗi sau, hãy viết lại thành spec kỹ thuật chuẩn:
+- Viết tắt và sai chính tả nhiều ("j", "z", "chx", "laucher", "apps") → chuẩn hóa thành "Launcher", "Minecraft", "Mod", "Theme", "Animation", "Opacity", "Font".
+- Câu quá dài, gộp nhiều ý → tách thành bullet list, mỗi tính năng 1 dòng, ghi rõ: (a) là gì, (b) chạy như thế nào, (c) có toggle bật/tắt không.
+- Mâu thuẫn "Rust thuần + UI đẹp + animation riêng từng theme" → đề xuất stack cụ thể: Rust core + Slint (hoặc egui) cho UI, tách biệt core/UI, giải thích lý do chọn.
+- Claim "tối ưu hơn vạn lần" không kiểm chứng được → đổi thành tiêu chí đo được: RAM idle < 100MB, khởi động < 2s, FPS Minecraft tăng ≥ 15% so với vanilla launcher, thời gian tải instance < 5 phút trên mạng 20Mbps.
+- Thiếu pháp lý → ghi rõ chỉ hỗ trợ Microsoft OAuth2, chỉ chuyển dữ liệu từ launcher hợp pháp (Legacy bản premium, launcher chính thức, Prism, MultiMC), không hỗ trợ TLauncher crack.
+- Thiếu nền tảng → chốt Windows 10/11 64-bit (ưu tiên) + Linux AppImage (tùy chọn).
+
+PHẦN 2 — TỔNG HỢP CÁC CÁCH TỐI ƯU FPS CAO NHẤT:
+Hãy liệt kê đầy đủ, có phân loại, mỗi mục ghi rõ (a) tên, (b) cách hoạt động, (c) mức độ ảnh hưởng FPS (cao/trung bình/thấp), (d) có rủi ro gì không. Phân theo 4 nhóm:
+
+NHÓM A — Tối ưu ở tầng LAUNCHER (Rust):
+1. Auto JVM Tuner: đọc RAM/CPU/GPU → chọn bộ cờ JVM tối ưu (Aikar's flags cho RAM < 8GB, ZGC cho RAM ≥ 8GB và Java ≥ 17, G1GC mặc định).
+2. RAM Saver Mode: toggle chuyển UI sang theme Lite (tắt animation), thêm cờ -XX:+UseZGC -XX:ZCollectionInterval=5 nếu hỗ trợ.
+3. FPS Target Lock: người dùng đặt 30/60/120 FPS → launcher ghi đè options.txt (render distance, graphics, particles, entity distance) trước khi launch.
+4. Pre-launch Optimizer: tự động backup options.txt, mods/, config/ trước khi chỉnh, cho phép rollback.
+5. Download Resume + SHA1 Verify: tải file bị ngắt tiếp tục bằng HTTP Range, verify SHA1 với manifest Mojang.
+6. Crash Report Analyzer: parse crash-reports/, so khớp database lỗi phổ biến, gợi ý nguyên nhân bằng tiếng Việt.
+7. Log Viewer tích hợp: hook stdout/stderr của tiến trình Java, filter INFO/WARN/ERROR, nút copy/upload paste.ee.
+
+NHÓM B — Tối ưu ở tầng MINECRAFT (can thiệp sâu):
+8. Patch bytecode bằng ASM: tối ưu các class nặng (ChunkRenderDispatcher, BlockEntityRenderer) — chỉ áp dụng cho instance được chọn, có toggle.
+9. Tự động cài mod tối ưu theo loader: Fabric → Sodium + Lithium + Starlight + FerriteCore + Krypton; Forge → Embeddium + Canary + Saturn. Giải thích từng mod tối ưu gì.
+10. Tắt chunk loading không cần thiết: chỉnh server.properties (view-distance, simulation-distance) nếu chơi single-player, hoặc options.txt (render distance ≤ 8 cho máy yếu).
+11. Nén texture động: chuyển texture pack sang định dạng nén (DDS/BC7) nếu GPU hỗ trợ, giảm VRAM.
+12. Preload assets thông minh: load trước âm thanh/texture hay dùng, bỏ qua asset không cần cho instance hiện tại.
+
+NHÓM C — Tối ưu ở tầng HỆ THỐNG:
+13. Ưu tiên tiến trình Java (Windows: SetPriorityClass HIGH_PRIORITY_CLASS; Linux: nice -n -5).
+14. Ghim CPU affinity cho tiến trình Java (tránh context switch trên máy 2 nhân).
+15. Tắt Windows Game DVR / Xbox Game Bar tự động khi launch (nếu phát hiện bật).
+16. Đặt JVM dùng huge pages (nếu OS hỗ trợ) — tăng tốc cấp phát bộ nhớ.
+
+NHÓM D — Tối ưu UI LAUNCHER (Rust):
+17. Lazy load tab: chỉ render tab đang mở, tab khác render khi cần.
+18. Virtual list cho danh sách phiên bản/mod (chỉ render item trong viewport).
+19. Cache ảnh nền/icon xuống đĩa, không decode lại mỗi lần mở.
+20. Dùng font system thay vì bundle font nặng; fallback an toàn.
+
+YÊU CẦU ĐẦU RA:
+- Viết lại toàn bộ spec dự án oXo Launcher theo cấu trúc: Tổng quan → Kiến trúc (Rust core + Slint UI + SQLite metadata) → Danh sách tính năng (chia nhóm A/B/C/D ở trên, mỗi tính năng có toggle + tiêu chí kiểm duyệt) → Tiêu chí hiệu năng đo được → Pháp lý.
+- Với mỗi tính năng tối ưu FPS, ghi rõ mức ảnh hưởng (cao/trung bình/thấp) và rủi ro (ví dụ: patch bytecode có thể gây crash nếu sai phiên bản Java).
+- Cuối cùng, đề xuất thứ tự triển khai (MVP → v1.0 → v1.1) để tôi biết làm gì trước.
+- Trả lời bằng tiếng Việt, format Markdown rõ ràng, không viết tắt, không sai chính tả.
