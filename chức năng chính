@@ -1,1 +1,23 @@
-
+### form
+menu load sẽ là 1  thành loading đc bo góc nhỏ lẻ đếm từ 1% đến 100% loading tùy tốc độ mạng ok 
+nút bấm sẽ là 1 nút bo góc có viền đổi màu nhẹ giữa các màu trắng khi bấm vô có hiệu ứng mòe viền nhẹ ok 
+nói chung bạn sẽ dựa vô ngoại hình tôi nói ban đầu và bắt đầu tinh chỉnh các nút và .. .theo nó 
+### chức năng chính 
+ khi mở apps lên có 1 mnenu load hiện lên bao chùm cả apps và loading khi loading xog mở menu chính 
+- menu chính  sẽ có các tab và chức năng 
+phần tab sẽ ở bên trái lưu ý tab sẽ có 2 tab 
+tab 1 chơi 
+sẽ có tính năng như 
+chọn phiên bản mincraft  (sẽ hiện full các phiên bản như Legacy Launcher  hiện full các phiên bản  )
+nút ... [chơi và tải] ( nếu khi bấm nó sẽ quét xem đã tải mincraft chưa nếu có rồi nó mở game và lên ok nếu chưa có nó bắt đầu tải và đổi nút đó thành thanh loading để tải game ok và khi game đã tải và có thể trực tiếp khởi động thì nút ... sẽ hiện chơi khi chưa cài và chưa sẵn sàng chơi thì nó hiện cài đặt )
+nút mở mục mod ( sẽ mở mục mod của mincraft lưu ý nếu chx cài mincraft nút này sẽ bị nhạt đi ko bấm đc vì chưa cài thì mở kiểu j ) 
+lưu ý tab 1 chỉ đơn giản như z bạn chỉnh bố cục sao cho đẹp và sang trọng ok 
+tab 2 cài đặt 
+sẽ có tính năng như
+1 nút chuyển đổi dữ liệu từ laucher khác ( khi bấm hiện 1 form với hiện sẵn các laucher như Legacy Launcher và Tlaucher và laucher mincraft và các laucher nổi tiếng trên mạng khác khi bấm vô 1 trong các laucher đó thì laucher oXo tiến hành copy dữ liệu như phiên bản mincraft mod .... về laucher oXo ok )
+2 đổi phong cách (khi bấm hiện 1 from nhỏ có các nút như sau 1 đổi phong cách ( đổi phong cách apps ok bạn làm thật thật nhiều phong cách đẹp mà tối ưu ok lưu ý ko có cái nào trùng hay la lá nhau mà ko đc làm đơn giản mà phải cầu kì với từng phong cách có đầy đủ animetion riêng hiệu ứng riêng) 2 nút tải ảnh nền ( tải ảnh nền từ máy để làm ảnh nền cho laucher ) 3 nút chỉnh độ trong suốt ( sẽ có chỉnh độ trong suốt ảnh và chữ full app ok ) 4 đổi kiểu chữ ( khi bấm hiện 1 form hiện full các kiểu chữ để chọn ok nó sẽ thay đổi chữ full apps thành kiểu chữ đó ok ) ...   )
+lưu ý bạn hãy viết lại hoàn toàn cấu trúc của 1 laucher mincraft bằng rust để tối ưu mạnh nhất cho mincraft máy siêu yếu để đạt đc fps cao nhất 
+lưu ý apps sẽ thật tối ưu cho máy yếu 
+lưu ý tôi chỉ nghĩ được như này bạn hãy làm thêm tính năng để can thiệp sâu vô từng phiên bản mincraft để tối ưu mạnh nhất vì mincraft ban đầu thực sự quá thảm hại vì nó tối ưu logic và cấu trúc không hề tốt ok ) 
+lưu ý tôi chỉ nghĩ được như này bạn hãy làm thêm tính năng cho laucher tôi nha 
+lưu ý làm thật chỉnh chu và bạn có thể thêm hay tinh chỉnh tối ưu thêm tính năng nha nhưng phải qua kiểm duyệt của tôi và phải nêu rõ ràng cái tính năng đó là j chạy như nào ok
