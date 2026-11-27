@@ -1,0 +1,21 @@
+Thiết kế giao diện ứng dụng (UI) mang phong cách hiện đại lấy cảm hứng từ hệ điều hành iOS (Apple Human Interface Guidelines) kết hợp hiệu ứng kính mờ Glassmorphism và thẩm mỹ tối giản, sang trọng (Minimalist & Luxury). 
+
+Yêu cầu chi tiết về phong cách và thông số giao diện:
+1. Hình dáng & Bo góc (Shape & Corners):
+   - Sử dụng cửa sổ dạng không viền mặc định (Borderless Window / Floating Card).
+   - Áp dụng kiểu bo góc liên tục mượt mà chuẩn iOS (Squircle / Continuous Corner Radius) với độ bo lớn (16px – 24px cho khung form chính, 10px – 14px cho các thẻ/nút bấm bên trong).
+   - Bố cục các thành phần cài đặt/chức năng theo dạng thẻ gom nhóm cách lề (iOS Inset Grouped Form) và các khối lưới gọn gàng (Control Center Tiles), tạo nhiều không gian thở (whitespace).
+
+2. Chất liệu & Hiệu ứng (Materials & Depth):
+   - Nền ứng dụng sử dụng hiệu ứng kính mờ bán trong suốt (Glassmorphism / Acrylic Translucency) với độ làm mờ hậu cảnh (Backdrop Blur) từ 20px – 30px.
+   - Tạo chiều sâu phân lớp rõ ràng giữa nền chính và các thẻ nổi (Elevated Cards) bằng viền sáng siêu mảnh 1px (Hairline Border) ánh trắng mờ (opacity 8% - 15%) kết hợp đổ bóng mềm lan tỏa nhẹ (Soft Ambient Shadow).
+
+3. Bảng màu đơn giản, sang trọng (Color Palette - Dark Mode chủ đạo):
+   - Nền tổng thể (Base Background): Đen than chì sâu hoặc xanh đen trầm (#0D0F12 hoặc #121214).
+   - Nền thẻ/Panel (Card Surface): Xám tối bán trong suốt (rgba(28, 28, 32, 0.65)).
+   - Màu nhấn (Accent Color): Trắng ngọc trai (#F5F5F7) hoặc Bạc ánh kim / Xanh xám lạnh tinh tế (#E2E8F0 / #64748B) cho các trạng thái kích hoạt (Active/Toggle), tuyệt đối không dùng màu neon lòe loẹt.
+   - Chữ (Typography): Chữ chính màu trắng ngà (#F5F5F7), chữ phụ/mô tả màu xám tro (#8E8E93), sử dụng font chữ không chân hiện đại, sạch sẽ (như SF Pro, Inter hoặc Segoe UI Variable) với phân cấp kích thước rõ ràng.
+
+4. Tương tác & Chuyển động (Micro-interactions):
+   - Hiệu ứng chuyển cảnh, đóng/mở menu mượt mà có độ nảy nhẹ tự nhiên (Spring Animation).
+   - Các nút bấm và thanh gạt (Toggle Switch) thiết kế tối giản chuẩn iOS, có phản hồi đổi độ sáng tinh tế khi di chuột (Hover) hoặc nhấn vào.
